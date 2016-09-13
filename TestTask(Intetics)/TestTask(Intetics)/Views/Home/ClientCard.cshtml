@@ -1,0 +1,75 @@
+﻿@model TestTask_Intetics_.Models.Client
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <form method="post">
+            <input type="hidden" value="@Model.Id" name="Id"/>
+            <input type="hidden" value="@Model.Cars" name="Cars"/>
+            <table>
+                <tr>
+                    <td>
+                        <p>Name </p>
+                    </td>
+                    <td>
+                        <input type="text" name="Name" value="@Model.Name"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Surname </p></td>
+                    <td>
+                        <input type="text" name="Surname" value="@Model.Surname"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Date of birth </p>
+                    </td>
+                    <td>
+                        <input type="date" name="DateOfBirth" value="@Model.DateOfBirth.ToString("yyyy-MM-dd")"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Address </p>
+                    </td>
+                    <td>
+                        <input type="text" name="Address" value="@Model.Address" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Phone </p>
+                    </td>
+                    <td>
+                        <input type="text" name="Phone" value="@Model.Phone" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Email </p>
+                    </td>
+                    <td>
+                        <input type="email" name="Email" value="@Model.Email" />
+                    </td>
+                </tr>
+                <tr>
+                    <td><input type="submit" value="Save"/> </td>
+                </tr>
+            </table>
+        </form>
+            <p>@Model.Name</p>
+            @foreach (var item in Model.Cars)
+            {
+                <p>@item.Model.Make.Name @item.Model.Name</p>
+            }
+</div>
+</body>
+</html>
