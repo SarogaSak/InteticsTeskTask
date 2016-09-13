@@ -10,6 +10,7 @@
 <body>
     <div>
         <form method="post">
+            <H1>Card of client</H1>
             <input type="hidden" value="@Model.Id" name="Id"/>
             <input type="hidden" value="@Model.Cars" name="Cars"/>
             <table>
@@ -41,7 +42,7 @@
                         <p>Address </p>
                     </td>
                     <td>
-                        <input type="text" name="Address" value="@Model.Address" />
+                        <input type="text" name="Address" value="@Model.Address"/>
                     </td>
                 </tr>
                 <tr>
@@ -49,7 +50,7 @@
                         <p>Phone </p>
                     </td>
                     <td>
-                        <input type="text" name="Phone" value="@Model.Phone" />
+                        <input type="text" name="Phone" value="@Model.Phone"/>
                     </td>
                 </tr>
                 <tr>
@@ -57,7 +58,7 @@
                         <p>Email </p>
                     </td>
                     <td>
-                        <input type="email" name="Email" value="@Model.Email" />
+                        <input type="email" name="Email" value="@Model.Email"/>
                     </td>
                 </tr>
                 <tr>
@@ -65,11 +66,21 @@
                 </tr>
             </table>
         </form>
-            <p>@Model.Name</p>
-            @foreach (var item in Model.Cars)
+        <hr/>
+
+        @if (Model.Cars.Count == 0)
+        {
+            <p>The client don't has cars</p>
+        }
+        else
+        {
+            <p>List of cars by @Model.Name @Model.Surname</p>
+            foreach (var item in Model.Cars)
             {
-                <p>@item.Model.Make.Name @item.Model.Name</p>
+                <p> - @item.Model.Make.Name @item.Model.Name</p>
             }
+        }
+        <a href="/Home/CarsOfClient/@Model.Id">Edit list</a>
 </div>
 </body>
 </html>

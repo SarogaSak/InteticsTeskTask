@@ -1,8 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 using TestTask_Intetics_.Models;
 
@@ -20,8 +17,7 @@ namespace TestTask_Intetics_.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.Orders = orders;
-            return View();
+            return View(orders);
         }
 
         public ActionResult OrderSearch(string firstLastName)
@@ -58,7 +54,14 @@ namespace TestTask_Intetics_.Controllers
                 Repository.Update(client, new EFDbContext());
             }
 
-            return View(orders.First(x => x.Car.Client.Id == client.Id).Car.Client);
+            return View(client);
+        }
+
+        [HttpGet]
+        public ActionResult CarsOfClient(int Id)
+        {
+            ViewBag.Models = Repository.Select<Model>().Include(x=>x.Make);
+            return View(orders.First(x => x.Car.Client.Id == Id).Car.Client);
         }
     }
 }

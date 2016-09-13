@@ -1,7 +1,5 @@
 ﻿@using System.Web.Optimization
-@{
-    Layout = null;
-}
+@model IEnumerable<TestTask_Intetics_.Models.Order>
 
 <!DOCTYPE html>
 
@@ -21,6 +19,7 @@
         }
     </div>
 <div id="results">
+    @Html.Partial("OrderSearch", Model);
 </div>
 </body>
 </html>
